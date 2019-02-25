@@ -1,0 +1,27 @@
+<! DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Vue 示例</title>
+</head>
+<body>
+	<div id="app">
+		<h1>data:{{ a }}</h1>
+	</div>
+	<script src="../vue.min.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				a: 1
+			},
+			created: function(){
+				console.log(this.a);
+			},
+			mounted: function(){
+				console.log(this.$el);
+			}
+			})
+	</script>
+</body>
+</html>
