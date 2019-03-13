@@ -1,0 +1,23 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-bind</title>
+	</head>
+
+	<body>
+		<div id = "app">
+			<a v-bind:href="url">百度</a>
+			<img v-bind:src="imgUrl">
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					url: 'https://www.baidu.com',
+					imgUrl: 'https://t9.baidu.com/it/u=2955153989,3173743927&fm=191&app=48&size=h300&n=0&g=4n&f=JPEG?sec=1853310920&t=153aa4fa13a27372f4d76b56eafa22b7'
+				}
+			})
+		</script>
+	</body>

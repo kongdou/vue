@@ -1,0 +1,22 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-show</title>
+	</head>
+
+	<body>
+		<!-- v-show和v-if具有同样的效果，v-show只是简单的切换css属性，v-if适合条件不经常变化的场景，v-show适合频繁切换的情况-->
+		<div id = "app">
+			<p v-show="show===1">显示文本</p>
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show : 1
+				}
+			})
+		</script>
+	</body>

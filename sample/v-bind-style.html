@@ -1,0 +1,51 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-bind-style</title>
+	</head>
+
+	<body>
+		<div id = "app">
+			<div :style="{'color': color,'fontSize': fontSize +'px'}">文本显示</div>
+		</div>
+		
+		<div id = "app1">
+			<div :style="styles">文本显示</div>
+		</div>
+
+		<div id = "app2">
+			<div :style="[styleA,styleB]">文本显示</div>
+		</div>
+				
+		<script src="../vue.min.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					color: 'red',
+					fontSize: 24
+				}
+			});
+			var app1 = new Vue({
+				el: '#app1',
+				data: {
+					styles: {
+						color: 'green',
+						fontSize: 34
+					}
+				}
+			});
+			var app2 = new Vue({
+				el: '#app2',
+				data: {
+					styleA: {
+						color: 'blue'
+					},
+					styleB: {
+						fontSize: 44
+					}
+				}
+			});			
+		</script>
+	</body>

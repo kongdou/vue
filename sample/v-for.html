@@ -1,0 +1,62 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-for</title>
+	</head>
+
+	<body>
+		<div id = "app">
+			<ul>
+				<li v-for="(book,index) in books">{{index}}-{{book.name}}</li>
+			</ul>
+		</div>
+		<div id="app1">
+				<ul>
+					<template v-for="book in books">
+						<li>书名：{{book.name}}  作者：{{book.author}}</li>
+					</template>
+				</ul>
+		</div>
+		
+		<div id="object">
+			<ul>
+				<li v-for="(value,key,index) in user">{{index}}-{{key}}-{{value}}</li>				
+			</ul>
+		</div>
+		
+		<script src="../vue.min.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					books : [
+					{name: 'Vue',author: 'A'},
+					{name: 'Java',author: 'B'},
+					{name: 'C++',author: 'C'}
+					]
+				}
+			});
+			var app1 = new Vue({
+				el: '#app1',
+				data: {
+					books : [
+					{name: 'Vue',author: 'A'},
+					{name: 'Java',author: 'B'},
+					{name: 'C++',author: 'C'}
+					]
+				}
+			});
+			var o = new Vue({
+				el: '#object',
+				data: {
+					user:{
+						name: 'deepsky',
+						gender: 'man',
+						age: 28
+						}
+				}
+			});
+			app.books.push({name: 'Python',author: 'D'});
+		</script>
+	</body>

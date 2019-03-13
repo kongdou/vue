@@ -1,0 +1,38 @@
+<! DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>插入html</title>
+</head>
+
+<body>
+	<div id="app">
+		<span v-html="link"></span>
+	</div>
+	<div id="app1">
+		<span v-pre>{{显示内部不被编译}}</span>
+	</div>
+	<div id="app3">
+	{{number/10}}
+	{{isOk ? "确定":"取消"}}
+	{{text.split(',').reverse().join(',')}}
+	</div>
+	<script src="../vue.min.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				link: '<a href="#">链接</a>'
+				}
+			})
+		var app3= new Vue({
+			el: '#app3',
+			data: {
+				number: 100,
+				isOk: true,
+				text: '你,好'
+				}
+			})			
+	</script>
+	
+</body>
