@@ -8,7 +8,7 @@
 	<body>
 		<div id="app">
 				<ul>
-					<template v-for="book in filterBooks">
+					<template v-for="book in sortBooks">
 						<li>书名：{{book.name}}  作者：{{book.author}}</li>
 					</template>
 				</ul>
@@ -24,9 +24,9 @@
 					]
 				},
 				computed: {
-					filterBooks: function(){
-					 return this.books.filter(function(book){
-					 	return book.name.match(/JavaScript/);
+					sortBooks: function(){
+					 return this.books.sort(function(book1,book2){
+					 	return book1.name.length > book2.name.length;
 					 	});
 					}
 					}
