@@ -1,0 +1,35 @@
+<! DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>v-model-select</title>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" v-cloak>
+		<select v-model="selected">
+			<option v-for="option in options" :value="option.value">{{option.text}}</option>
+		</select>
+		<p>选择:{{selected}}</p>
+	</div>
+	
+	<script src="../vue.min.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				selected: 'css',
+				options:[
+				{text: 'CSS',value: 'css'},
+				{text: 'js',value: 'JavaScript'},
+				{text: 'java',value: 'Java'}
+				]
+				}
+			});
+	</script>
+</body>
+</html>
