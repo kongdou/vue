@@ -1,0 +1,22 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件</title>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<my-component message1="显示的内容1" message2="显示的内容2"></my-component>
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			Vue.component("my-component",{
+				props: ['message1','message2'],
+				template: '<div>{{message1}}{{message2}}</div>'
+			});
+			var app = new Vue({
+				el: '#app'
+			})
+		</script>
+	</body>
