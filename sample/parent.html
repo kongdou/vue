@@ -1,0 +1,32 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<p>{{message}}</p>
+			<my-component></my-component>
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			var bus = new Vue();
+			
+			Vue.component("my-component",{
+				template: '<button @click="handleEvent">传递事件</button>',
+				methods: {
+					handleEvent: function(){
+									this.$parent.message = '来自子组件的Message';
+					}
+				}
+			});
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: ''
+				}
+			})
+		</script>
+	</body>

@@ -1,0 +1,32 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>slot</title>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<chilid-component>
+				<p>分发的内容</p>
+				<p>分发更多的内容</p>
+			</chilid-component>
+
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			
+			Vue.component("chilid-component",{
+				template: '\
+				<div>\
+				  <slot>\
+				    <p>如果父类数据没有插入内容，将默认显示</p>\
+				  </slot>\
+				</div>'
+			});
+			
+			var app = new Vue({
+				el: '#app'
+			})
+		</script>
+	</body>
