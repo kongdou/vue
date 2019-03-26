@@ -1,10 +1,7 @@
 Vue.component('tabs',{
 	template: '<div class="tabs">\
                <div class="tabs-bar">\
-                 <div :class="tabCls(item)"\
-                 v-for="(item,index) in navList"\
-                 @click="handleChange(index)">\
-                 </div>\
+                 <div :class="tabCls(item)" v-for="(item,index) in navList" @click="handleChange(index)">{{item.label}}</div>\
                </div>\
                <div class="tabs-content">\
                  <slot></slot>\
@@ -47,7 +44,7 @@ Vue.component('tabs',{
 				if(index === 0){
 					if(!_this.currentValue){
 						 _this.currentValue = pane.name || index;
-					}	
+					}
 				}
 				});	
 			this.updateStatus();
@@ -62,7 +59,7 @@ Vue.component('tabs',{
 	},
 	watch: {
 			value: function(val){
-				this.currentValue = val;	
+				this.currentValue = val;
 			},
 			currentValue: function(){
 				this.updateStatus();	

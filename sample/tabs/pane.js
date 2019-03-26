@@ -3,11 +3,11 @@ Vue.component('pane',{
 	template: '<div class="pane" v-show="show"><slot></slot></div>',
 	props: {
 	  name: {
-	  type: String	
+	  	type: String	
 	  },
 	  label: {
-	   type: String,
-	   default: ''	
+	   	type: String,
+	   	default: ''	
 	  }
 	},
 	data: function(){
