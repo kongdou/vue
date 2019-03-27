@@ -1,52 +1,52 @@
 Vue.component('question',{
 	props: ['value'],
-	template: '<div>\
-						   <div style="width:100%" v-if="this.page == 1">\
-						     <span>1.ÇëÎÊÄúµÄĞÔ±ğÊÇ£º</span>\
-						     <div class="options" v-for="(item,index) in sex_list">\
-						     	<input type="radio" :value="item.name" @change="radio_change($event,index)" name="sexy" :checked="item.checked">{{item.name}}\
-						     </div>\
-						     <div class="setp_bottom">\
-						     	<button :disabled="disabledOne" :class="[{disabledColor: disabledOne},buttonone,greycolor]" @click="nextQuestionTwo">ÏÂÒ»²½</button>\
-						     	<button class="[buttonone]" @click="restartQuestionOne">ÖØÖÃ</button>\
-						     </div>\
-						   </div>\
-						   <div style="width:100%" v-else-if="this.page == 2">\
-						     <span>2.ÇëÑ¡ÔñÄúµÄĞËÈ¤°®ºÃ£º</span>\
-						     <div class="options" v-for="(item,index) in hobbies">\
-						     	<input type="checkbox" :value="item.name" @change="checkboxChange($event,index)" name="hobbies" :checked="item.checked">{{item.name}}<br>\
-						     </div>\
-						     <div class="setp_bottom second_quesiton">\
-						     	<button :disabled="disabledTwo" :class="[greycolor,{disabledColor: disabledTwo}]" @click="nextQuestionThree">ÏÂÒ»²½</button>\
-						     	<button @click="lastStepOne">ÉÏÒ»²½</button>\
-						     	<button @click="restartQuestionTwo">ÖØÖÃ</button>\
-						     </div>\
-						   </div>\						   
-						   <div style="width:100%" v-else="this.page == 2">\
-						     <span>3.Çë½éÉÜÒ»ÏÂ×Ô¼º£º</span>\
-						     <div>\
-						     	<textarea name="introduction" autofocus rows="10" cols="40" @blur="checkLength" :value="text"></textarea>\
-						     </div>\
-						     <div class="setp_bottom second_quesiton">\
-						     	<button :disabled="disabledThree" :class="[greycolor,{disabledColor: disabledThree}]" @click="submit">Ìá½»</button>\
-						     	<button @click="lastStepTwo">ÉÏÒ»²½</button>\
-						     	<button @click="restartQuestionThree">ÖØÖÃ</button>\
-						     </div>\
-						   </div>\								   
-	           </div>',
+	template: '<div>'+
+						   '<div style="width:100%" v-if="this.page == 1">'+
+						     '<span>1.è¯·é—®æ‚¨çš„æ€§åˆ«æ˜¯ï¼š</span>'+
+						     '<div class="options" v-for="(item,index) in sex_list">'+
+						     	'<input type="radio" :value="item.name" @change="radio_change($event,index)" name="sexy" :checked="item.checked">{{item.name}}'+
+						     '</div>'+
+						     '<div class="setp_bottom">'+
+						     	'<button :disabled="disabledOne" :class="[{disabledColor: disabledOne},buttonone,greycolor]" @click="nextQuestionTwo">ä¸‹ä¸€æ­¥</button>'+
+						     	'<button @click="restartQuestionOne" :class="[buttonone]">é‡ç½®</button>'+
+						     '</div>'+
+						   '</div>'+
+						   '<div style="width:100%" v-else-if="this.page == 2">'+
+						     '<span>2.è¯·é€‰æ‹©æ‚¨çš„å…´è¶£çˆ±å¥½ï¼š</span>'+
+						     '<div class="options" v-for="(item,index) in hobbies">'+
+						     	'<input type="checkbox" :value="item.name" @change="checkboxChange($event,index)" name="hobbies" :checked="item.checked">{{item.name}}<br>'+
+						     '</div>'+
+						     '<div class="setp_bottom second_quesiton">'+
+						     	'<button :disabled="disabledTwo" :class="[greycolor,{disabledColor: disabledTwo}]" @click="nextQuestionThree">ä¸‹ä¸€æ­¥</button>'+
+						     	'<button @click="lastStepOne">ä¸Šä¸€æ­¥</button>'+
+						     	'<button @click="restartQuestionTwo">é‡ç½®</button>'+
+						     '</div>'+
+						   '</div>'+
+						   '<div style="width:100%" v-else="this.page == 3">'+
+						     '<span>3.è¯·ä»‹ç»ä¸€ä¸‹è‡ªå·±ï¼š</span>'+
+						     '<div>'+
+						     	 '<textarea name="introduction" autofocus rows="8" cols="45" @blur="checkLength" :value="text"></textarea>'+
+						     '</div><br>'+
+						     '<div class="setp_bottom second_quesiton">'+
+						     	 '<button :disabled="disabledThree" :class="[greycolor,{disabledColor: disabledThree}]" @click="submit">æäº¤</button>'+
+						     	 '<button @click="lastStepTwo">ä¸Šä¸€æ­¥</button>'+
+						     	 '<button @click="restartQuestionThree">é‡ç½®</button>'+
+						     '</div>'+
+						   '</div>'+						   
+	           '</div>',
 	data: function(){
 		return {
 			sex_list: [
-			{name: 'ÄĞ'},
-			{name: 'Å®'},
-			{name: '±£ÃÜ'}
+			{name: 'ç”·'},
+			{name: 'å¥³'},
+			{name: 'ä¿å¯†'}
 			],
 			hobbies: [
-			{name: '¿´Êé'},
-			{name: 'ÓÎÓ¾'},
-			{name: 'ÓğÃ«Çò'},
-			{name: 'µçÓ°'},
-			{name: 'ÒôÀÖ'}
+			{name: 'çœ‹ä¹¦'},
+			{name: 'æ¸¸æ³³'},
+			{name: 'ç¾½æ¯›çƒ'},
+			{name: 'ç”µå½±'},
+			{name: 'éŸ³ä¹'}
 			],
 			disabledOne: true,
 			disabledTwo: true,
@@ -55,8 +55,7 @@ Vue.component('question',{
 			greycolor:'greyColor',
 			text:'',
 			page: this.value,
-			user_data:{
-            }
+			user_data: {}
 		}
 	},
 	methods: {
@@ -64,10 +63,105 @@ Vue.component('question',{
 			var radio_value = el.target.value;
 			if(typeof radio_value != 'undefined' && radio_value != ''){
 				this.disabledOne = false;
-				this.sex_list[index].check = true;
+				this.sex_list[index].checked= true;
 			}else{
 				this.disabledOne = true;
 			}
 		},
+		checkboxChange: function(el,index){
+			var boxvalue = el.target.checked;
+			
+			var count = 0;
+			if(boxvalue == true){
+				this.hobbies[index].checked = true;
+			}else{
+				this.hobbies[index].checked = false;
+			}
+			this.hobbies.forEach(function(item){
+				if(item.checked == true){
+					count++;
+				}
+				});
+			if(count >= 2){
+				this.disabledTwo = false;
+			}else{
+				this.disabledTwo = true;
+			}
+		},
+		restartQuestionOne: function(){
+			this.sex_list.forEach(function(item){
+				item.checked = false;
+			});
+			this.disabledOne = true;
+		},
+		restartQuestionTwo: function(){
+			this.hobbies.forEach(function(item){
+				item.checked = false;
+			});
+			this.disabledTwo = true;
+		},
+    restartQuestionThree: function () {
+    	this.text = '';
+      this.disabledThree = true;
+    },
+    nextQuestionTwo: function(){
+    	this.page++;
+    	var obj = {};
+    	this.sex_list.forEach(function(item){
+    		if(item.checked){
+    			obj.sex = item.name;
+    		}
+    		});
+    	this.user_data = obj;
+    },
+    nextQuestionThree: function(){
+    	var count = 0;
+    	var obj = this.user_data;
+    	obj.hobbies = [];
+    	this.hobbies.forEach(function(item){
+    		if(item.checked == true){
+    			obj.hobbies.push(item.name);
+    			count++;
+    		}
+    		});
+    		this.user_data = obj;
+
+    		if(count > 3){
+    			alert("ä¸å¾—è¶…è¿‡ä¸‰é¡¹ï¼Œè¯·é‡æ–°é€‰æ‹©");
+    		}else{
+    			this.page ++;
+    		}
+    },
+    lastStepOne: function(){
+    	this.user_data = {};
+    	this.hobbies.forEach(function(item){
+    		item.checked = false;
+    	});
+    	this.page--;
+    },
+    lastStepTwo: function(){
+    	this.text = '';
+    	if(typeof this.user_data.introduction != 'undefined'){
+    		delete this.user_data.introduction;
+    	}
+    	this.page--;
+    },
+    submit: function(){
+    	var obj = this.user_data;
+    	obj.introduction = this.text;
+    	this.user_data = obj;
+    	console.log(this.user_data);
+    },
+    checkLength: function(el){
+    	var value = el.target.value;
+    	var length = value.length;
+    	if(length >=10 ){
+    		this.disabledThree = false;
+    	}else{
+    		this.disabledThree = true;
+    	}
+    	this.text = value;
+    }
+		
 	}
 	})
