@@ -1,0 +1,46 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>render</title>
+	</head>
+	
+	<body>
+		<div id="app" v-cloak>
+			<ele></ele>
+		</div>
+    
+    <script src="../../vue.min.js"></script>
+		<script>
+			Vue.component('ele',{
+				render: function(createElement){
+					return createElement('div',
+					{
+						class: {
+							'show': this.show
+							},
+							attrs: {
+								id: 'element'
+							},
+							on: {
+								click: this.handleClick	
+							}
+					},'文本内容')
+				},
+				data: function(){
+					return {
+					  show: true	
+					}
+					},
+					methods: {
+					handleClick: function(){
+					  console.log('clicked!');	
+					}
+					}
+				});
+				
+				var app = new Vue({
+					el: '#app'
+					});
+			</script>
+	</body>

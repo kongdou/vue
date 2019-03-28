@@ -1,0 +1,32 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>render</title>
+	</head>
+	
+	<body>
+		<div id="app" v-cloak>
+			<ele></ele>
+		</div>
+    
+    <script src="../../vue.min.js"></script>
+		<script>
+			var Child = {
+			 render: function(createElement){
+			 	return createElement('h2','text');
+			}
+				};
+				
+				
+			Vue.component('ele',{
+				render: function(createElement){
+					return createElement('div',Array.apply(null,{length: 5}).map(function(){return createElement(Child)}))
+				}
+				});
+				
+				var app = new Vue({
+					el: '#app'
+					});
+			</script>
+	</body>
