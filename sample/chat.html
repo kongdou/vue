@@ -1,0 +1,57 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>render</title>
+	</head>
+	
+	<body>
+		<div id="app" v-cloak>
+			<ele></ele>
+		</div>
+    
+    <script src="../vue.min.js"></script>
+		<script>
+			Vue.component('ele',{
+				render: function(createElement){
+					var _this = this;
+					if(this.list.length){
+						var listNode = createElement('ul',this.list.map(function(item){
+							return createElement('li',item);
+						}));
+					}else{
+						var listNode = createElement('p','暂无信息');	
+					}
+					
+					return createElement('div',[
+						listNode,
+						createElement('input',{
+							attrs: {
+								placeholder: '输入内容,按回车键发送'		
+							},
+							style: {
+								width: '200px'
+							},
+							on: {
+								keyup: function(event){
+									if(event.keyCode !==13)return;
+									_this.list.push(event.target.value);
+									event.target.value = '';
+								}	
+							}
+						})
+					]);
+				},
+				data: function(){
+					return {
+						value: '',
+						list: []
+					}	
+			  }
+			});
+				
+				var app = new Vue({
+					el: '#app'
+				});
+			</script>
+	</body>

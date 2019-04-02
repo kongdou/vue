@@ -1,0 +1,46 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>render</title>
+	</head>
+	
+	<body>
+		<div id="app" v-cloak>
+			<ele :list="list"></ele>
+			<button @click="handlerClick">显示列表</button>
+		</div>
+    
+    <script src="../../vue.min.js"></script>
+		<script>
+			Vue.component('ele',{
+				render: function(createElement){
+					if(this.list.length){
+						return createElement('ul',this.list.map(function(item){
+							return createElement('li',item);
+							}));
+					}else{
+							return createElement('div',nodes);
+					}
+				
+				},
+				props: {
+				  list: {
+				  type: Array
+				  }
+				}
+				});
+				
+				var app = new Vue({
+					el: '#app',
+					data: {
+					 list: []
+					},
+					methods: {
+						handlerClick: function(){
+							this.list = ['《Vue.js实战》','《JavaScript高级程序设计》','《JavaScript 语言精辟》']	
+						}
+					}
+					});
+			</script>
+	</body>
