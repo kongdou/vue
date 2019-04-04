@@ -1,0 +1,99 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>render</title>
+	</head>
+	
+	<body>
+		<div id="app" v-cloak>
+				<smart-item :data="data"></smart-item>
+				<button @click="change('img')">切换为图片组件</button>
+				<button @click="change('vedio')">切换为视频组件</button>
+				<button @click="change('text')">切换为文本组件</button>
+		</div>
+    
+    <script src="../../vue.min.js"></script>
+		<script>
+			//图片组件
+			var itemImage = {
+				props: ['data'],
+				render: function(createElement){
+					return createElement('div',[
+						createElement('p','图片组件'),
+						createElement('img',{
+							attrs: {
+								src: this.data.url
+							}
+							})
+					]);
+				}
+			};
+
+			//视频组件
+			var itemVedio = {
+				props: ['data'],
+				render: function(createElement){
+					return createElement('div',[
+						createElement('p','视频组件'),
+						createElement('vedio',{
+							attrs: {
+								src: this.data.url,
+								controls: 'controls',
+								autoplay: 'autoplay'
+							}
+							})
+					]);
+				}
+			};
+
+			//文本组件
+			var itemText = {
+				props: ['data'],
+				render: function(createElement){
+					return createElement('div',[
+						createElement('p','文本组件'),
+						createElement('p',this.data.text)
+					]);
+				}
+			};
+		Vue.component('smart-item',{
+			//函数化组件
+			functional: true,
+			render: function(createElement,context){
+				
+				function getComponent(){
+					var data = context.props.data;
+					if(data === 'img') return itemImage;
+					if(data === 'vedio') return itemVedio;
+					if(data === 'text') return itemText;
+				}
+				
+				return createElement(
+					getComponent(),
+					{
+						props: {
+							data: context.props.data
+							}
+					},
+					context.children;
+					);
+			},
+			props: {
+				data: {
+					type: Object,
+					required: true
+				}
+				},
+			});								
+										
+			var app = new Vue({
+				el: '#app',
+				methods: {
+					change: function(){
+						
+					}
+				}
+				});
+			</script>
+	</body>
