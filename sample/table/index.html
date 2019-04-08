@@ -8,9 +8,8 @@
 
 	<body>
 		<div id="app" v-cloak>
-			<v-table :data="data" :columns="columns">
-				<button @click="handleAddData">添加数据</button>
-			</v-table>
+			<v-table :data="data" :columns="columns"></v-table>
+			<button @click="handleAddData">添加数据</button>
 		</div>
 		<script src="vue.min.js"></script>
 	  <script src="table.js"></script>

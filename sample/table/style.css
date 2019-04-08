@@ -24,6 +24,11 @@ table td,table th{
 	cursor: pointer;
 }
 
+table th a{
+	display: inline-block;
+	margin: 0 4px;
+	cursor: pointer;	
+}
 table th a.on{
 	color: #3939ff;
 }
