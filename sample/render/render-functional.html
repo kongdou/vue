@@ -23,7 +23,8 @@
 						createElement('p','图片组件'),
 						createElement('img',{
 							attrs: {
-								src: this.data.url
+								src: this.data.url,
+								width: 400
 							}
 							})
 					]);
@@ -53,20 +54,20 @@
 				render: function(createElement){
 					return createElement('div',[
 						createElement('p','文本组件'),
-						createElement('p',this.data.text)
+						createElement('p',this.data.content)
 					]);
 				}
 			};
+			
 		Vue.component('smart-item',{
 			//函数化组件
 			functional: true,
 			render: function(createElement,context){
-				
 				function getComponent(){
 					var data = context.props.data;
-					if(data === 'img') return itemImage;
-					if(data === 'vedio') return itemVedio;
-					if(data === 'text') return itemText;
+					if(data.type === 'img') return itemImage;
+					if(data.type === 'vedio') return itemVedio;
+					if(data.type === 'text') return itemText;
 				}
 				
 				return createElement(
@@ -76,7 +77,7 @@
 							data: context.props.data
 							}
 					},
-					context.children;
+					context.children
 					);
 			},
 			props: {
@@ -85,15 +86,36 @@
 					required: true
 				}
 				},
-			});								
-										
+			});
+								
 			var app = new Vue({
 				el: '#app',
+				data: {
+					data: {}
+				},
 				methods: {
-					change: function(){
-						
+					change: function(type){
+						if(type === 'img'){
+							this.data = {
+								type: 'img',
+								url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555307112&di=a2f8e224ad1e00c5e2869bc557c2b39b&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161208%2F2e6b350277ae46b59b83b4c545515de8_th.jpg'
+								}
+						}else if(type === 'vedio'){
+								this.data = {
+									type: 'vedio',
+									url: 'http://www.baidu.com'
+							}
+						}else if(type === 'text'){
+							this.data = {
+								type: 'text',
+								content: '文本'
+								}
+						}
 					}
-				}
+				},
+					created: function(){
+						this.change('text');
+					}
 				});
 			</script>
 	</body>
