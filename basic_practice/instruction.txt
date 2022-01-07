@@ -1,0 +1,10 @@
+basic js grammary practice...
+
+enviroment:
+1. visual studio code installed
+
+2.install " debugger for chrome " plugin 
+
+3.input "http-server" commond in console
+if the messages "http-server commond not found" is showed in console.
+execute the commond "npm install -g http-server" in console.
